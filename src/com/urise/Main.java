@@ -1,6 +1,6 @@
 package com.urise;
 
-import com.urise.Storage.methodGauss;
+import com.urise.storage.methodGauss;
 import com.urise.model.Matrix;
 
 public class Main {

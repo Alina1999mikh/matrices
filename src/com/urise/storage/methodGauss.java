@@ -1,4 +1,4 @@
-package com.urise.Storage;
+package com.urise.storage;
 
 import com.urise.model.Matrix;
 
