@@ -1,7 +1,7 @@
 package com.urise.model;
 
 public class Matrix {
-    public double[][] matrix;
+    private double[][] matrix;
     private int dimension;
 
     public Matrix(int dimension) {
@@ -12,6 +12,10 @@ public class Matrix {
                 matrix[i][j] = 1 + (int) (Math.random() * 20);
             }
         }
+    }
+
+    public double[][] getMatrix() {
+        return matrix;
     }
 
     public int dimension() {
