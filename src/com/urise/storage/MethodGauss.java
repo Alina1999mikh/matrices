@@ -16,7 +16,6 @@ public class MethodGauss extends SystemLinearEquations {
             subtractTopLine(matrix.getMatrix(), n, top);
             top++;
         }
-        printMatrix(matrix);
         double[] result = new double[n];
         reverse(matrix.getMatrix(), result, n);
         return result;

@@ -18,5 +18,6 @@ abstract public class SystemLinearEquations implements Equations {
     public void printResult(double[] result, int n) {
         System.out.print("\nResult: ");
         for (int i = 0; i < n; i++) System.out.printf("%.3f ", result[i]);
+        System.out.println();
     }
 }
