@@ -4,9 +4,9 @@ import com.urise.model.Matrix;
 
 public class methodGauss extends SystemLinearEquations {
     @Override
-    public double[] solution(Matrix matrix) {
-        printMatrix(matrix);
-        int top = 0;
+    public double[] solution(final Matrix immutableMatrix) {
+        Matrix matrix=new Matrix(immutableMatrix);
+        int top=0;
         int n = matrix.dimension();
         int m = n + 1;
         while (top < n) {

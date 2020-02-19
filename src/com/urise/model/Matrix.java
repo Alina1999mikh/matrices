@@ -14,6 +14,17 @@ public class Matrix {
         }
     }
 
+    public Matrix(Matrix matrix) {
+        this.dimension = matrix.dimension;
+        this.matrix = new double[dimension][dimension + 1];
+        for (int i = 0; i < dimension; i++) {
+            for (int j = 0; j < dimension + 1; j++) {
+                assert false;
+                this.matrix[i][j] = matrix.matrix[i][j];
+            }
+        }
+    }
+
     public double[][] getMatrix() {
         return matrix;
     }
