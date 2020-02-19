@@ -2,7 +2,7 @@ package com.urise.storage;
 
 import com.urise.model.Matrix;
 
-public class methodGauss extends SystemLinearEquations {
+public class MethodGauss extends SystemLinearEquations {
     @Override
     public double[] solution(final Matrix immutableMatrix) {
         Matrix matrix=new Matrix(immutableMatrix);
@@ -50,7 +50,6 @@ public class methodGauss extends SystemLinearEquations {
         for (int i = top; i < n; i++) {
             matrix[i][top] = matrix[i][top] / matrix[i][top];
         }
-        System.out.println();
     }
 
     private void subtractTopLine(double[][] matrix, int n, int top) {

@@ -1,12 +1,13 @@
 package com.urise;
 
-import com.urise.storage.methodGauss;
+import com.urise.storage.MethodGauss;
 import com.urise.model.Matrix;
+import com.urise.storage.MethodSimpleIterations;
 
 import java.util.Scanner;
 
 public class Main {
-    private static final methodGauss SLE = new methodGauss();
+    private static final MethodSimpleIterations SLE = new MethodSimpleIterations();
 
     public static void main(String[] args) {
 
