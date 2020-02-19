@@ -4,7 +4,7 @@ import com.urise.model.Matrix;
 
 public class methodGauss extends SystemLinearEquations {
     @Override
-    public void solution(Matrix matrix) {
+    public double[] solution(Matrix matrix) {
         printMatrix(matrix);
         int top = 0;
         int n = matrix.dimension();
@@ -19,7 +19,7 @@ public class methodGauss extends SystemLinearEquations {
         printMatrix(matrix);
         double[] result = new double[n];
         reverse(matrix.getMatrix(), result, n);
-        printResult(result, n);
+        return result;
     }
 
     private int getIndexMaxFirstElement(double[][] matrix, int n, int top) {
@@ -69,10 +69,5 @@ public class methodGauss extends SystemLinearEquations {
             for (int i = 0; i < index; i++)
                 matrix[i][n] = matrix[i][n] - matrix[i][index] * result[index];
         }
-    }
-
-    private void printResult(double[] result, int n) {
-        System.out.print("\nResult: ");
-        for (int i = 0; i < n; i++) System.out.printf("%.1f ", result[i]);
     }
 }

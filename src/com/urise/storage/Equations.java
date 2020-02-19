@@ -5,5 +5,7 @@ import com.urise.model.Matrix;
 public interface Equations {
     void printMatrix(Matrix matrix);
 
-    void solution(Matrix matrix);
+    double[] solution(Matrix matrix);
+
+    void printResult(double[] result, int n);
 }
