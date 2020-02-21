@@ -3,7 +3,6 @@ package com.urise.storage;
 import com.urise.model.Matrix;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Scanner;
 
 abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations {
@@ -13,7 +12,6 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
     protected double[] doSolution(Matrix matrix, double[] result) {
         doDiagonal(matrix);
         if (checkSolution(matrix)) {
-           // qualitySteps(matrix);
             result = getVectorX(matrix, result);
         } else {
             System.out.println("Cannot be solved by this method!\n");
@@ -26,7 +24,6 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
     public void printResultNumber(double result) {
         BigDecimal number = new BigDecimal(result);
         number = number.setScale(needExactitude, BigDecimal.ROUND_HALF_EVEN);
-        //BigDecimal.number.setScale(1, RoundingMode.HALF_UP)
         System.out.print(number + " ");
     }
 
@@ -46,9 +43,9 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
         double max = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                massiveMax[i] = massiveMax[i] + Math.abs(matrix.getMatrix()[i][j]);
+                if (i != j) massiveMax[i] = massiveMax[i] + Math.abs(matrix.getMatrix()[i][j]);
             }
-            max = massiveMax[i];
+            if (massiveMax[i] > max) max = massiveMax[i];
         }
         return max;
     }
@@ -67,9 +64,9 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
         System.out.print("Input a exactitude: ");
         needExactitude = ((-1) * in.nextInt());
         int exactitude;
-        double steps=qualitySteps(matrix);
+        double steps = qualitySteps(matrix);
         System.out.println(steps);
-        int i=0;
+        int i = 0;
         do {
             result = calculateVector(matrix, result);
             i++;
@@ -80,9 +77,9 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
     }
 
     private double qualitySteps(Matrix matrix) {
-        double C=getSolution(matrix);
-        double B=getB(matrix);
-        return Math.ceil(Math.log((1-C)/(B*Math.pow(10,needExactitude)))/Math.log(C)+1);
+        double C = getSolution(matrix);
+        double B = getB(matrix);
+        return Math.ceil(Math.log((1 - C) / (B * Math.pow(10, needExactitude))) / Math.log(C) + 1);
     }
 
     private int getExactitude(double[] result) {
