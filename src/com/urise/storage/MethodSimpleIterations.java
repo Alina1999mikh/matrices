@@ -10,7 +10,7 @@ public class MethodSimpleIterations extends AbstractGaussZeidel {
         singleDiagonal(matrix);
         nullDiagonal(matrix);
         if (convergesIteratively(matrix)) {
-            result = vectorX(matrix);
+            result = getVectorX(matrix);
         } else {
             System.out.println("Cannot be solved by method iteration!\n");
             System.exit(0);
@@ -37,18 +37,17 @@ public class MethodSimpleIterations extends AbstractGaussZeidel {
         }
     }
 
-    private double[] vectorX(Matrix matrix) {
+    private double[] getVectorX(Matrix matrix) {
         int n = matrix.dimension();
         double[] vector = new double[n];
         Arrays.fill(vector, 0);
-        double e;
-        e = 5; //TODO exactitude
-        double exactitude = 8;
+        double e = 3;
+        double exactitude = 0;
         do {
             vector = calculateVector(matrix, vector);
-            exactitude--;
+            exactitude++;
         }
-        while (e < exactitude);
+        while (e > exactitude);
         return vector;
     }
 
