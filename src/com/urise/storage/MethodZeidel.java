@@ -9,16 +9,16 @@ public class MethodZeidel extends AbstractGaussZeidel {
         singleDiagonal(matrix);
     }
 
+    @Override
+    protected boolean checkSolution(Matrix matrix) {
+        return true;
+    }
+
     protected double[] calculateVector(Matrix matrix, double[] result) {
         for (int i = 0; i < matrix.dimension(); i++) {
             result[i] = matrix.getMatrix()[i][matrix.dimension()] - calculateLineElements(matrix, i, result);
         }
         return result;
-    }
-
-    @Override
-    protected boolean checkSolution(Matrix matrix) {
-        return true;
     }
 
     private double calculateLineElements(Matrix matrix, int indexNotMultiply, double[] result) {
