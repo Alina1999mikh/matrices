@@ -10,6 +10,19 @@ public class MethodSimpleIterations extends AbstractGaussZeidel {
     }
 
     @Override
+    protected double[] calculateVector(Matrix matrix, double[] vector) {
+        int n = matrix.dimension();
+        double[] vectorResult = new double[n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                vectorResult[i] = vectorResult[i] + (matrix.getMatrix()[i][j] * vector[j]);
+            }
+            vectorResult[i] = matrix.getMatrix()[i][n] - vectorResult[i];
+        }
+        return vectorResult;
+    }
+
+    @Override
     protected boolean checkSolution(Matrix matrix) {
         int n = matrix.dimension();
         double[] massiveMax = new double[n];
@@ -21,19 +34,6 @@ public class MethodSimpleIterations extends AbstractGaussZeidel {
             max = massiveMax[i];
         }
         return max < 1;
-    }
-
-    @Override
-    protected double[] calculateVector(Matrix matrix, double[] vector) {
-        int n = matrix.dimension();
-        double[] vectorResult = new double[n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                vectorResult[i] = vectorResult[i] + (matrix.getMatrix()[i][j] * vector[j]);
-            }
-            vectorResult[i] = matrix.getMatrix()[i][n] - vectorResult[i];
-        }
-        return vectorResult;
     }
 
     private void nullDiagonal(Matrix matrix) {

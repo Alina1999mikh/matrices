@@ -3,7 +3,6 @@ package com.urise.model;
 public class Matrix {
     private double[][] matrix;
     private int dimension;
-
     public Matrix(int dimension) {
         this.dimension = dimension;
         matrix = new double[dimension][dimension + 1];

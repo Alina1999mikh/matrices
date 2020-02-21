@@ -3,6 +3,7 @@ package com.urise.storage;
 import com.urise.model.Matrix;
 
 public class MethodGauss extends AbstractSystemLinearEquations {
+
     @Override
     public double[] doSolution(Matrix matrix, double[] result) {
         int top = 0;
@@ -15,6 +16,11 @@ public class MethodGauss extends AbstractSystemLinearEquations {
             top++;
         }
         return reverse(matrix, result, n);
+    }
+
+    @Override
+    protected void printResultNumber(double result) {
+        System.out.printf("%.10f ", result);
     }
 
     private int getIndexMaxFirstElement(Matrix matrix, int top) {

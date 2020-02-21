@@ -7,5 +7,5 @@ public interface Equations {
 
     double[] solution(Matrix matrix);
 
-    void printResult(double[] result, int n);
+    void printResult(double[] result);
 }

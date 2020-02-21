@@ -16,6 +16,11 @@ public class MethodZeidel extends AbstractGaussZeidel {
         return result;
     }
 
+    @Override
+    protected boolean checkSolution(Matrix matrix) {
+        return true;
+    }
+
     private double calculateLineElements(Matrix matrix, int indexNotMultiply, double[] result) {
         int i = 0;
         double sum = 0;
@@ -26,10 +31,5 @@ public class MethodZeidel extends AbstractGaussZeidel {
             if (i == indexNotMultiply) i++;
         }
         return sum;
-    }
-
-    @Override
-    protected boolean checkSolution(Matrix matrix) {
-        return true;
     }
 }

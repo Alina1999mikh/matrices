@@ -2,9 +2,11 @@ package com.urise.storage;
 
 import com.urise.model.Matrix;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations {
+    private int needExactitude;
 
     @Override
     protected double[] doSolution(Matrix matrix, double[] result) {
@@ -13,9 +15,16 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
             result = getVectorX(matrix, result);
         } else {
             System.out.println("Cannot be solved by this method!\n");
-            System.exit(0);
+            return null;
         }
         return result;
+    }
+
+    @Override
+    public void printResultNumber(double result) {
+        BigDecimal number = new BigDecimal(result);
+        number = number.setScale(needExactitude, BigDecimal.ROUND_HALF_EVEN);
+        System.out.print(number+" ");
     }
 
     protected void singleDiagonal(Matrix matrix) {
@@ -28,17 +37,39 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
         }
     }
 
-    protected double[] getVectorX(Matrix matrix, double[] result) {
+    private double[] getVectorX(Matrix matrix, double[] result) {
         Scanner in = new Scanner(System.in);
         System.out.print("Input a exactitude: ");
-        double e = ((-1)*in.nextInt()-1);
-        double exactitude = 0;
+        needExactitude = ((-1) * in.nextInt());
+        int exactitude;
+        System.out.println(needExactitude);
         do {
             result = calculateVector(matrix, result);
-            exactitude++;
+            exactitude = getExactitude(result);
         }
-        while (e > exactitude);
+        while (exactitude < needExactitude);
         return result;
+    }
+
+    private int getExactitude(double[] result) {
+        int minExactitude = 0;
+        for (int i = 0; i < result.length; i++) {
+            int exactitude = 0;
+            BigDecimal number = new BigDecimal(result[i]);
+            number = number.setScale(needExactitude + 1, BigDecimal.ROUND_CEILING);
+            BigDecimal wholePart = number.setScale(0, BigDecimal.ROUND_DOWN);
+            while (wholePart.compareTo(number) != 0) {
+                exactitude++;
+                BigDecimal onMultiply = new BigDecimal(10);
+                number = number.multiply(onMultiply);
+                wholePart = number.setScale(0, BigDecimal.ROUND_DOWN);
+            }
+            if (i == 0) minExactitude = exactitude;
+            else {
+                if (exactitude < minExactitude) minExactitude = exactitude;
+            }
+        }
+        return minExactitude;
     }
 
     protected abstract double[] calculateVector(Matrix matrix, double[] result);
@@ -46,5 +77,4 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
     protected abstract void doDiagonal(Matrix matrix);
 
     protected abstract boolean checkSolution(Matrix matrix);
-
 }

@@ -18,19 +18,21 @@ abstract public class AbstractSystemLinearEquations implements Equations {
     }
 
     @Override
-    public void printResult(double[] result, int n) {
+    public void printResult(double[] result) {
         System.out.print("\nResult: ");
-        for (int i = 0; i < n; i++) System.out.printf("%.3f ", result[i]);
+        for (double v : result) printResultNumber(v);
         System.out.println();
     }
 
     @Override
-    public double[] solution(Matrix immutableMatrix){
+    public double[] solution(Matrix immutableMatrix) {
         Matrix matrix = new Matrix(immutableMatrix);
         double[] result = new double[matrix.dimension()];
         Arrays.fill(result, 0);
-        return doSolution(matrix,result);
+        return doSolution(matrix, result);
     }
+
+    protected abstract void printResultNumber(double result);
 
     protected abstract double[] doSolution(Matrix matrix, double[] result);
 }

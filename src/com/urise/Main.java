@@ -26,19 +26,19 @@ public class Main {
                     final MethodGauss gauss = new MethodGauss();
                     gauss.printMatrix(matrix);
                     double[] result = gauss.solution(matrix);
-                    gauss.printResult(result, dimension);
+                    gauss.printResult(result);
                     break;
                 case "2":
                     final MethodSimpleIterations simpleIteration = new MethodSimpleIterations();
                     simpleIteration.printMatrix(matrix);
                     result = simpleIteration.solution(matrix);
-                    simpleIteration.printResult(result, dimension);
+                    simpleIteration.printResult(result);
                     break;
                 case "3":
                     final MethodZeidel zeidel = new MethodZeidel();
                     zeidel.printMatrix(matrix);
                     result = zeidel.solution(matrix);
-                    zeidel.printResult(result, dimension);
+                    zeidel.printResult(result);
                     break;
                 case "exit":
                     System.out.println("\nSee you later!\n");
