@@ -3,13 +3,14 @@ package com.urise;
 import com.urise.storage.MethodGauss;
 import com.urise.model.Matrix;
 import com.urise.storage.MethodSimpleIterations;
+import com.urise.storage.MethodZeidel;
 
 import java.util.Scanner;
 
 
 public class Main {
 
-    public static void main(String[] args)  {
+    public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
         System.out.print("Input a dimension: ");
@@ -17,24 +18,30 @@ public class Main {
         final Matrix matrix = new Matrix(dimension);
         while (true) {
             Scanner inLine = new Scanner(System.in);
-            System.out.print("\nВведите одну из команд - ( Gauss | Simple iteration | exit ): ");
+            System.out.print("\nВведите одну из команд - ( 1-Gauss | 2-Simple iteration | 3-Zeidel | exit ): ");
             String command = inLine.nextLine();
 
             switch (command) {
-                case "Gauss":
+                case "1":
                     final MethodGauss gauss = new MethodGauss();
                     gauss.printMatrix(matrix);
                     double[] result = gauss.solution(matrix);
                     gauss.printResult(result, dimension);
                     break;
-                case "Simple iteration":
+                case "2":
                     final MethodSimpleIterations simpleIteration = new MethodSimpleIterations();
                     simpleIteration.printMatrix(matrix);
                     result = simpleIteration.solution(matrix);
                     simpleIteration.printResult(result, dimension);
                     break;
+                case "3":
+                    final MethodZeidel zeidel = new MethodZeidel();
+                    zeidel.printMatrix(matrix);
+                    result = zeidel.solution(matrix);
+                    zeidel.printResult(result, dimension);
+                    break;
                 case "exit":
-                    System.out.println("See you later!\n");
+                    System.out.println("\nSee you later!\n");
                     System.exit(0);
                 default:
                     System.out.println("Неверная команда.");
