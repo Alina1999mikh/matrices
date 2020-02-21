@@ -14,6 +14,7 @@ abstract public class AbstractSystemLinearEquations implements Equations {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     @Override

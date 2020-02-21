@@ -2,15 +2,17 @@ package com.urise.storage;
 
 import com.urise.model.Matrix;
 
+import java.util.Scanner;
+
 abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations {
 
     @Override
     protected double[] doSolution(Matrix matrix, double[] result) {
         doDiagonal(matrix);
         if (checkSolution(matrix)) {
-            result = getVectorX(matrix,result);
+            result = getVectorX(matrix, result);
         } else {
-            System.out.println("Cannot be solved by method iteration!\n");
+            System.out.println("Cannot be solved by this method!\n");
             System.exit(0);
         }
         return result;
@@ -27,8 +29,9 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
     }
 
     protected double[] getVectorX(Matrix matrix, double[] result) {
-        int n = matrix.dimension();
-        double e = 3;
+        Scanner in = new Scanner(System.in);
+        System.out.print("Input a exactitude: ");
+        double e = ((-1)*in.nextInt()-1);
         double exactitude = 0;
         do {
             result = calculateVector(matrix, result);

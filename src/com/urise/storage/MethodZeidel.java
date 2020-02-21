@@ -29,7 +29,7 @@ public class MethodZeidel extends AbstractGaussZeidel {
     }
 
     @Override
-    protected boolean checkSolution(Matrix matrix){
+    protected boolean checkSolution(Matrix matrix) {
         return true;
     }
 }

@@ -23,12 +23,6 @@ public class MethodSimpleIterations extends AbstractGaussZeidel {
         return max < 1;
     }
 
-    private void nullDiagonal(Matrix matrix) {
-        for (int i = 0; i < matrix.dimension(); i++) {
-            matrix.getMatrix()[i][i]--;
-        }
-    }
-
     @Override
     protected double[] calculateVector(Matrix matrix, double[] vector) {
         int n = matrix.dimension();
@@ -41,4 +35,11 @@ public class MethodSimpleIterations extends AbstractGaussZeidel {
         }
         return vectorResult;
     }
+
+    private void nullDiagonal(Matrix matrix) {
+        for (int i = 0; i < matrix.dimension(); i++) {
+            matrix.getMatrix()[i][i]--;
+        }
+    }
+
 }
