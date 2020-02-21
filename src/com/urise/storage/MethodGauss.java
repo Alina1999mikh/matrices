@@ -2,20 +2,18 @@ package com.urise.storage;
 
 import com.urise.model.Matrix;
 
-public class MethodGauss extends SystemLinearEquations {
+public class MethodGauss extends AbstractSystemLinearEquations {
     @Override
-    public double[] solution(final Matrix immutableMatrix) {
-        Matrix matrix = new Matrix(immutableMatrix);
+    public double[] doSolution(Matrix matrix, double[] result) {
         int top = 0;
         int n=matrix.dimension();
         while (top < n) {
             int max = getIndexMaxFirstElement(matrix, top);
             if (max != top) changeLine(matrix, max, top);
-            normalize(matrix, top);
+            divideTopElement(matrix, top);
             subtractTopLine(matrix, top);
             top++;
         }
-        double[] result = new double[n];
         reverse(matrix, result, n);
         return result;
     }
@@ -40,7 +38,7 @@ public class MethodGauss extends SystemLinearEquations {
         }
     }
 
-    private void normalize(Matrix matrix, int top) {
+    private void divideTopElement(Matrix matrix, int top) {
         int n = matrix.dimension();
         for (int i = top; i < n; i++) {
             for (int j = top + 1; j < n + 1; j++) {

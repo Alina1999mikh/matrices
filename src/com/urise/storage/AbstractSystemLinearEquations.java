@@ -2,7 +2,7 @@ package com.urise.storage;
 
 import com.urise.model.Matrix;
 
-abstract public class SystemLinearEquations implements Equations {
+abstract public class AbstractSystemLinearEquations implements Equations {
 
     @Override
     public void printMatrix(Matrix matrix) {
@@ -20,4 +20,13 @@ abstract public class SystemLinearEquations implements Equations {
         for (int i = 0; i < n; i++) System.out.printf("%.3f ", result[i]);
         System.out.println();
     }
+
+    @Override
+    public double[] solution(Matrix immutableMatrix){
+        Matrix matrix = new Matrix(immutableMatrix);
+        double[] result = new double[matrix.dimension()];
+        return doSolution(matrix,result);
+    }
+
+    protected abstract double[] doSolution(Matrix matrix, double[] result);
 }

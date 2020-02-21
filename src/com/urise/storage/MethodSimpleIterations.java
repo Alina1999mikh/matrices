@@ -4,12 +4,10 @@ import com.urise.model.Matrix;
 
 import java.util.Arrays;
 
-public class MethodSimpleIterations extends SystemLinearEquations {
+public class MethodSimpleIterations extends AbstractGaussZeidel {
     @Override
-    public double[] solution(final Matrix immutableMatrix) {
-        Matrix matrix = new Matrix(immutableMatrix);
-        double[] result = new double[matrix.dimension()];
-
+    public double[] doSolution(Matrix matrix, double[] result) {
+        singleDiagonal(matrix);
         nullDiagonal(matrix);
         if (convergesIteratively(matrix)) {
             result = vectorX(matrix);
@@ -34,13 +32,8 @@ public class MethodSimpleIterations extends SystemLinearEquations {
     }
 
     private void nullDiagonal(Matrix matrix) {
-        int n = matrix.dimension();
-        for (int i = 0; i < n; i++) {
-            double mainElement = matrix.getMatrix()[i][i];
-            for (int j = 0; j < n + 1; j++) {
-                matrix.getMatrix()[i][j] /= mainElement;
-                if (i == j) matrix.getMatrix()[i][j]--;
-            }
+        for (int i = 0; i < matrix.dimension(); i++) {
+            matrix.getMatrix()[i][i]--;
         }
     }
 
