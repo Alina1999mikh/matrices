@@ -17,7 +17,7 @@ public class Main {
         final Matrix matrix = new Matrix(dimension);
         while (true) {
             Scanner inLine = new Scanner(System.in);
-            System.out.print("\nВведите одну из команд - ( Gauss | Simple | exit): ");
+            System.out.print("\nВведите одну из команд - ( Gauss | Simple iteration | exit ): ");
             String command = inLine.nextLine();
 
             switch (command) {
@@ -27,7 +27,7 @@ public class Main {
                     double[] result = gauss.solution(matrix);
                     gauss.printResult(result, dimension);
                     break;
-                case "Simple":
+                case "Simple iteration":
                     final MethodSimpleIterations simpleIteration = new MethodSimpleIterations();
                     simpleIteration.printMatrix(matrix);
                     result = simpleIteration.solution(matrix);
