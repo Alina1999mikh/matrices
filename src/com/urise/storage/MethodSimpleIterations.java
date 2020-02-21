@@ -2,23 +2,15 @@ package com.urise.storage;
 
 import com.urise.model.Matrix;
 
-import java.util.Arrays;
-
 public class MethodSimpleIterations extends AbstractGaussZeidel {
     @Override
-    public double[] doSolution(Matrix matrix, double[] result) {
+    protected void doDiagonal(Matrix matrix) {
         singleDiagonal(matrix);
         nullDiagonal(matrix);
-        if (convergesIteratively(matrix)) {
-            result = getVectorX(matrix);
-        } else {
-            System.out.println("Cannot be solved by method iteration!\n");
-            System.exit(0);
-        }
-        return result;
     }
 
-    private boolean convergesIteratively(Matrix matrix) {
+    @Override
+    protected boolean checkSolution(Matrix matrix) {
         int n = matrix.dimension();
         double[] massiveMax = new double[n];
         double max = 0;
@@ -37,21 +29,8 @@ public class MethodSimpleIterations extends AbstractGaussZeidel {
         }
     }
 
-    private double[] getVectorX(Matrix matrix) {
-        int n = matrix.dimension();
-        double[] vector = new double[n];
-        Arrays.fill(vector, 0);
-        double e = 3;
-        double exactitude = 0;
-        do {
-            vector = calculateVector(matrix, vector);
-            exactitude++;
-        }
-        while (e > exactitude);
-        return vector;
-    }
-
-    private double[] calculateVector(Matrix matrix, double[] vector) {
+    @Override
+    protected double[] calculateVector(Matrix matrix, double[] vector) {
         int n = matrix.dimension();
         double[] vectorResult = new double[n];
         for (int i = 0; i < n; i++) {

@@ -14,8 +14,7 @@ public class MethodGauss extends AbstractSystemLinearEquations {
             subtractTopLine(matrix, top);
             top++;
         }
-        reverse(matrix, result, n);
-        return result;
+        return reverse(matrix, result, n);
     }
 
     private int getIndexMaxFirstElement(Matrix matrix, int top) {
@@ -56,12 +55,13 @@ public class MethodGauss extends AbstractSystemLinearEquations {
         }
     }
 
-    private void reverse(Matrix matrix, double[] result, int n) {
+    private double[] reverse(Matrix matrix, double[] result, int n) {
         int index;
         for (index = n - 1; index >= 0; index--) {
             result[index] = matrix.getMatrix()[index][n];
             for (int i = 0; i < index; i++)
                 matrix.getMatrix()[i][n] = matrix.getMatrix()[i][n] - matrix.getMatrix()[i][index] * result[index];
         }
+        return result;
     }
 }
