@@ -7,7 +7,7 @@ public class MethodGauss extends AbstractSystemLinearEquations {
     @Override
     public double[] doSolution(Matrix matrix, double[] result) {
         int top = 0;
-        int n=matrix.dimension();
+        int n = matrix.dimension();
         while (top < n) {
             int max = getIndexMaxFirstElement(matrix, top);
             if (max != top) changeLine(matrix, max, top);
@@ -55,7 +55,7 @@ public class MethodGauss extends AbstractSystemLinearEquations {
     private void subtractTopLine(Matrix matrix, int top) {
         int n = matrix.dimension();
         for (int i = top + 1; i < n; i++) {
-            for (int j = top; j < n+1; j++) {
+            for (int j = top; j < n + 1; j++) {
                 matrix.getMatrix()[i][j] = matrix.getMatrix()[i][j] - matrix.getMatrix()[top][j];
             }
         }

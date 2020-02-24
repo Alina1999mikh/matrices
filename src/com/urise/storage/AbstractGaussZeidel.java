@@ -62,7 +62,7 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
     private double[] getVectorX(Matrix matrix, double[] result) {
         Scanner in = new Scanner(System.in);
         System.out.print("Input a exactitude: ");
-        needExactitude = ((-1) * in.nextInt());;
+        needExactitude = ((-1) * in.nextInt());
         double steps = qualitySteps(matrix);
         int i = 0;
         do {
