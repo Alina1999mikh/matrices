@@ -15,7 +15,7 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
             result = getVectorX(matrix, result);
         } else {
             System.out.println("Cannot be solved by this method!\n");
-            return null;
+            System.exit(-1);
         }
         return result;
     }
@@ -62,15 +62,12 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
     private double[] getVectorX(Matrix matrix, double[] result) {
         Scanner in = new Scanner(System.in);
         System.out.print("Input a exactitude: ");
-        needExactitude = ((-1) * in.nextInt());
-        int exactitude;
+        needExactitude = ((-1) * in.nextInt());;
         double steps = qualitySteps(matrix);
-        System.out.println(steps);
         int i = 0;
         do {
             result = calculateVector(matrix, result);
             i++;
-            //exactitude = getExactitude(result);
         }
         while (i < steps);
         return result;
@@ -80,27 +77,6 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
         double C = getSolution(matrix);
         double B = getB(matrix);
         return Math.ceil(Math.log((1 - C) / (B * Math.pow(10, needExactitude))) / Math.log(C) + 1);
-    }
-
-    private int getExactitude(double[] result) {
-        int minExactitude = 0;
-        for (int i = 0; i < result.length; i++) {
-            int exactitude = 0;
-            BigDecimal number = new BigDecimal(result[i]);
-            number = number.setScale(needExactitude + 1, BigDecimal.ROUND_CEILING);
-            BigDecimal wholePart = number.setScale(0, BigDecimal.ROUND_DOWN);
-            while (wholePart.compareTo(number) != 0) {
-                exactitude++;
-                BigDecimal onMultiply = new BigDecimal(10);
-                number = number.multiply(onMultiply);
-                wholePart = number.setScale(0, BigDecimal.ROUND_DOWN);
-            }
-            if (i == 0) minExactitude = exactitude;
-            else {
-                if (exactitude < minExactitude) minExactitude = exactitude;
-            }
-        }
-        return minExactitude;
     }
 
     protected abstract boolean checkSolution(Matrix matrix);
