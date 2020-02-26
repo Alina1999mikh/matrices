@@ -3,28 +3,22 @@ package com.urise.storage;
 import com.urise.model.Matrix;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Scanner;
 
 abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations {
+
     private int needExactitude;
 
     @Override
-    protected double[] doSolution(Matrix matrix, double[] result) {
+    protected void doSolution(Matrix matrix) {
         doDiagonal(matrix);
         if (checkSolution(matrix)) {
-            result = getVectorX(matrix, result);
+            getVectorX(matrix);
         } else {
             System.out.println("Cannot be solved by this method!\n");
             System.exit(-1);
         }
-        return result;
-    }
-
-    @Override
-    public void printResultNumber(double result) {
-        BigDecimal number = new BigDecimal(result);
-        number = number.setScale(needExactitude, BigDecimal.ROUND_HALF_EVEN);
-        System.out.print(number + " ");
     }
 
     protected void singleDiagonal(Matrix matrix) {
@@ -59,18 +53,17 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
         return max;
     }
 
-    private double[] getVectorX(Matrix matrix, double[] result) {
+    private void getVectorX(Matrix matrix) {
         Scanner in = new Scanner(System.in);
         System.out.print("Input a exactitude: ");
         needExactitude = ((-1) * in.nextInt());
         double steps = qualitySteps(matrix);
         int i = 0;
         do {
-            result = calculateVector(matrix, result);
+            matrix.setResult(calculateVector(matrix));
             i++;
         }
         while (i < steps);
-        return result;
     }
 
     private double qualitySteps(Matrix matrix) {
@@ -81,7 +74,7 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
 
     protected abstract boolean checkSolution(Matrix matrix);
 
-    protected abstract double[] calculateVector(Matrix matrix, double[] result);
+    protected abstract double[] calculateVector(Matrix matrix);
 
     protected abstract void doDiagonal(Matrix matrix);
 }

@@ -3,6 +3,7 @@ package com.urise.storage;
 import com.urise.model.Matrix;
 
 public class MethodSimpleIterations extends AbstractGaussZeidel {
+
     @Override
     protected void doDiagonal(Matrix matrix) {
         singleDiagonal(matrix);
@@ -15,12 +16,12 @@ public class MethodSimpleIterations extends AbstractGaussZeidel {
     }
 
     @Override
-    protected double[] calculateVector(Matrix matrix, double[] vector) {
+    protected double[] calculateVector(Matrix matrix) {
         int n = matrix.dimension();
         double[] vectorResult = new double[n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                vectorResult[i] = vectorResult[i] + (matrix.getMatrix()[i][j] * vector[j]);
+                vectorResult[i] = vectorResult[i] + (matrix.getMatrix()[i][j] * matrix.getResult()[j]);
             }
             vectorResult[i] = matrix.getMatrix()[i][n] - vectorResult[i];
         }
@@ -32,5 +33,4 @@ public class MethodSimpleIterations extends AbstractGaussZeidel {
             matrix.getMatrix()[i][i]--;
         }
     }
-
 }

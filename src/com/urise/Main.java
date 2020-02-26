@@ -25,20 +25,21 @@ public class Main {
                 case "1":
                     final MethodGauss gauss = new MethodGauss();
                     gauss.printMatrix(matrix);
-                    double[] result = gauss.solution(matrix);
-                    gauss.printResult(result);
+                    gauss.solution(matrix);
+
+                    gauss.printResult(matrix);
                     break;
                 case "2":
                     final MethodSimpleIterations simpleIteration = new MethodSimpleIterations();
                     simpleIteration.printMatrix(matrix);
-                    result = simpleIteration.solution(matrix);
-                    simpleIteration.printResult(result);
+                    simpleIteration.solution(matrix);
+                    simpleIteration.printResult(matrix);
                     break;
                 case "3":
                     final MethodZeidel zeidel = new MethodZeidel();
                     zeidel.printMatrix(matrix);
-                    result = zeidel.solution(matrix);
-                    zeidel.printResult(result);
+                    zeidel.solution(matrix);
+                    zeidel.printResult(matrix);
                     break;
                 case "exit":
                     System.out.println("\nSee you later!\n");

@@ -5,7 +5,7 @@ import com.urise.model.Matrix;
 public class MethodGauss extends AbstractSystemLinearEquations {
 
     @Override
-    public double[] doSolution(Matrix matrix, double[] result) {
+    public void doSolution(Matrix matrix) {
         int top = 0;
         int n = matrix.dimension();
         while (top < n) {
@@ -15,12 +15,7 @@ public class MethodGauss extends AbstractSystemLinearEquations {
             subtractTopLine(matrix, top);
             top++;
         }
-        return reverse(matrix, result, n);
-    }
-
-    @Override
-    protected void printResultNumber(double result) {
-        System.out.printf("%.10f ", result);
+        reverse(matrix);
     }
 
     private int getIndexMaxFirstElement(Matrix matrix, int top) {
@@ -61,13 +56,16 @@ public class MethodGauss extends AbstractSystemLinearEquations {
         }
     }
 
-    private double[] reverse(Matrix matrix, double[] result, int n) {
+    private void reverse(Matrix matrix) {
         int index;
+        int n = matrix.dimension();
+        double[] result = new double[n];
         for (index = n - 1; index >= 0; index--) {
             result[index] = matrix.getMatrix()[index][n];
-            for (int i = 0; i < index; i++)
+            for (int i = 0; i < index; i++) {
                 matrix.getMatrix()[i][n] = matrix.getMatrix()[i][n] - matrix.getMatrix()[i][index] * result[index];
+            }
         }
-        return result;
+        matrix.setResult(result);
     }
 }

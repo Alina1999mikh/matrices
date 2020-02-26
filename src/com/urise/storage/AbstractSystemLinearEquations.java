@@ -2,8 +2,6 @@ package com.urise.storage;
 
 import com.urise.model.Matrix;
 
-import java.util.Arrays;
-
 abstract public class AbstractSystemLinearEquations implements Equations {
 
     @Override
@@ -18,21 +16,19 @@ abstract public class AbstractSystemLinearEquations implements Equations {
     }
 
     @Override
-    public void printResult(double[] result) {
+    public void printResult(Matrix matrix) {
         System.out.print("\nResult: ");
-        for (double v : result) printResultNumber(v);
+        for (int i = 0; i < matrix.dimension(); i++) {
+            System.out.printf("%.3f ", matrix.getResult()[i]);
+        }
         System.out.println();
     }
 
     @Override
-    public double[] solution(Matrix immutableMatrix) {
+    public void solution(Matrix immutableMatrix) {
         Matrix matrix = new Matrix(immutableMatrix);
-        double[] result = new double[matrix.dimension()];
-        Arrays.fill(result, 0);
-        return doSolution(matrix, result);
+        doSolution(matrix);
     }
 
-    protected abstract void printResultNumber(double result);
-
-    protected abstract double[] doSolution(Matrix matrix, double[] result);
+    protected abstract void doSolution(Matrix matrix);
 }
