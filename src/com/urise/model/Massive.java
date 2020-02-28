@@ -16,6 +16,11 @@ public class Massive {
         setMatrix(0, in.nextInt());
         setMatrix(1, in.nextInt());
         setMatrix(2, in.nextInt());
+        Scanner inInterval = new Scanner(System.in);
+        System.out.print("\nВведите интервал - ");
+        double intervalA = inInterval.nextDouble();
+        double intervalB = inInterval.nextDouble();
+        setInterval(intervalA, intervalB);
         if(matrix[2]!=0) {
             matrix[1]=matrix[1]-matrix[2];
             matrix[2]=0;

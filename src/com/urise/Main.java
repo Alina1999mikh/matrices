@@ -15,10 +15,6 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        switchTypeEquations();
-    }
-
-    private static void switchTypeEquations() {
         Scanner inType = new Scanner(System.in);
         System.out.print("\nВведите одну из команд - ( 1- линейное уравнение | 2- нелинейное уравнение | exit ): ");
         String typeEquations = inType.nextLine();
@@ -75,9 +71,6 @@ public class Main {
                     nuton.solution(m);
                     nuton.printResult(m);
                     break;
-                case "back":
-                    switchTypeEquations();
-                    break;
                 case "exit":
                     System.out.println("\nSee you later!\n");
                     System.exit(0);
@@ -94,11 +87,6 @@ public class Main {
             System.out.print("\nВыберите метод - ( 1- половинного деления | 2- Хорд | 3-Ньютона | back |  exit ): ");
             String command = inLine.nextLine();
 
-            Scanner inInterval = new Scanner(System.in);
-            System.out.print("\nВведите интервал - ");
-            double intervalA = inInterval.nextDouble();
-            double intervalB = inInterval.nextDouble();
-            massive.setInterval(intervalA, intervalB);
             switch (command) {
                 case "1":
                     final MethodHalfDivision halfDivision = new MethodHalfDivision();
@@ -117,9 +105,6 @@ public class Main {
                     nuton.printMatrix(massive);
                     nuton.solution(massive);
                     nuton.printResult(massive);
-                    break;
-                case "back":
-                    switchTypeEquations();
                     break;
                 case "exit":
                     System.out.println("\nSee you later!\n");

@@ -27,7 +27,7 @@ abstract public class AbstractSystemHalfDivisionHoard extends AbstractSystemNoLi
         return Math.abs(storage.getInterval()[1] - storage.getInterval()[0]) / 2;
     }
 
-    protected double multiplyExtremePoints(Massive storage, double[] interval) {
+    protected double multiplyExtremePoints(Massive storage, double[] interval)  {
         return productPoint(storage, interval[0]) * productPoint(storage, interval[1]);
     }
 

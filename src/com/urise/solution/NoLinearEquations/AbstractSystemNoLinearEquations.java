@@ -27,7 +27,7 @@ public abstract class AbstractSystemNoLinearEquations implements SolutionEquatio
     public void solution(Object objectStorage) {
         Massive storage = (Massive) objectStorage;
         Scanner in = new Scanner(System.in);
-        System.out.print("\nВВедите точность : ");
+        System.out.print("\nВведите точность : ");
         double e = in.nextDouble();
         doSolution(storage, e);
     }
