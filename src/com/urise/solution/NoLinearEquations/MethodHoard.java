@@ -1,4 +1,4 @@
-package com.urise.Solution.NoLinearEquations;
+package com.urise.solution.NoLinearEquations;
 
 import com.urise.model.Massive;
 

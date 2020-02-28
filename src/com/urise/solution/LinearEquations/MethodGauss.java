@@ -1,6 +1,5 @@
-package com.urise.Solution.LinearEquations;
+package com.urise.solution.LinearEquations;
 
-import com.urise.Solution.LinearEquations.AbstractSystemLinearEquations;
 import com.urise.model.Matrix;
 
 public class MethodGauss extends AbstractSystemLinearEquations {

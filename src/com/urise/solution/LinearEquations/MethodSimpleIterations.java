@@ -1,6 +1,5 @@
-package com.urise.Solution.LinearEquations;
+package com.urise.solution.LinearEquations;
 
-import com.urise.Solution.LinearEquations.AbstractGaussZeidel;
 import com.urise.model.Matrix;
 
 public class MethodSimpleIterations extends AbstractGaussZeidel {

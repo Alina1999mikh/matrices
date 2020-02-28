@@ -1,9 +1,6 @@
-package com.urise.Solution.NoLinearEquations;
+package com.urise.solution.NoLinearEquations;
 
 import com.urise.model.Massive;
-import com.urise.model.Matrix;
-
-import java.util.Scanner;
 
 public class MethodNuton extends AbstractSystemNoLinearEquations {
 
@@ -21,7 +18,7 @@ public class MethodNuton extends AbstractSystemNoLinearEquations {
         System.out.println(x);
     }
 
-    private double getF(Massive storage){
+    private double getF(Massive storage) {
         return (productPoint(storage, storage.getX()) / (storage.getX() * storage.getMatrix()[0] * 2));
     }
 }

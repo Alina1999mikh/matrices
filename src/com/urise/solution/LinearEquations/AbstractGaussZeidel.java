@@ -1,4 +1,4 @@
-package com.urise.Solution.LinearEquations;
+package com.urise.solution.LinearEquations;
 
 import com.urise.model.Matrix;
 
@@ -67,7 +67,7 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
     private double qualitySteps(Matrix storage) {
         double C = getSolution(storage);
         double B = getB(storage);
-        return Math.ceil(Math.log((1 - C) / (B * (1/needExactitude))) / Math.log(C) + 1);
+        return Math.ceil(Math.log((1 - C) / (B * (1 / needExactitude))) / Math.log(C) + 1);
     }
 
     protected abstract boolean checkSolution(Matrix storage);

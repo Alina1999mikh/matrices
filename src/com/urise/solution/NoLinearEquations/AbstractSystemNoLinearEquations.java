@@ -1,7 +1,7 @@
-package com.urise.Solution.NoLinearEquations;
+package com.urise.solution.NoLinearEquations;
 
-import com.urise.Solution.SolutionEquations;
 import com.urise.model.Massive;
+import com.urise.solution.SolutionEquations;
 
 import java.util.Scanner;
 
@@ -9,7 +9,7 @@ public abstract class AbstractSystemNoLinearEquations implements SolutionEquatio
 
     @Override
     public void printMatrix(Object objectStorage) {
-        Massive storage=(Massive) objectStorage;
+        Massive storage = (Massive) objectStorage;
         for (int j = 0; j < storage.dimension() + 2; j++) {
             if (j < storage.dimension()) {
                 if (storage.getMatrix()[j] != 1)
@@ -25,7 +25,7 @@ public abstract class AbstractSystemNoLinearEquations implements SolutionEquatio
 
     @Override
     public void solution(Object objectStorage) {
-        Massive storage=(Massive) objectStorage;
+        Massive storage = (Massive) objectStorage;
         Scanner in = new Scanner(System.in);
         System.out.print("\nВВедите точность : ");
         double e = in.nextDouble();
@@ -34,7 +34,7 @@ public abstract class AbstractSystemNoLinearEquations implements SolutionEquatio
 
     @Override
     public void printResult(Object objectStorage) {
-        Massive storage=(Massive) objectStorage;
+        Massive storage = (Massive) objectStorage;
         System.out.println("x= " + storage.getX());
         System.out.print("\nРезультат: ");
         System.out.printf("%.4f*(%.4f)^2 + %.4f = %.4f", storage.getMatrix()[0], storage.getX(), storage.getMatrix()[1], storage.getResult());

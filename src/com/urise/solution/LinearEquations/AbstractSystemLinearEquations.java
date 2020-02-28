@@ -1,7 +1,7 @@
-package com.urise.Solution.LinearEquations;
+package com.urise.solution.LinearEquations;
 
-import com.urise.Solution.SolutionEquations;
 import com.urise.model.Matrix;
+import com.urise.solution.SolutionEquations;
 
 abstract public class AbstractSystemLinearEquations implements SolutionEquations {
 

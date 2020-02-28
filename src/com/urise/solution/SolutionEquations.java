@@ -1,6 +1,4 @@
-package com.urise.Solution;
-
-import com.urise.model.Matrix;
+package com.urise.solution;
 
 public interface SolutionEquations {
     void printMatrix(Object objectStorage);

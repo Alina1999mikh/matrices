@@ -1,13 +1,13 @@
 package com.urise;
 
-import com.urise.Solution.LinearEquations.MethodGauss;
-import com.urise.Solution.NoLinearEquations.MethodHalfDivision;
-import com.urise.Solution.NoLinearEquations.MethodHoard;
-import com.urise.Solution.NoLinearEquations.MethodNuton;
 import com.urise.model.Massive;
 import com.urise.model.Matrix;
-import com.urise.Solution.LinearEquations.MethodSimpleIterations;
-import com.urise.Solution.LinearEquations.MethodZeidel;
+import com.urise.solution.LinearEquations.MethodGauss;
+import com.urise.solution.LinearEquations.MethodSimpleIterations;
+import com.urise.solution.LinearEquations.MethodZeidel;
+import com.urise.solution.NoLinearEquations.MethodHalfDivision;
+import com.urise.solution.NoLinearEquations.MethodHoard;
+import com.urise.solution.NoLinearEquations.MethodNuton;
 
 import java.util.Scanner;
 
