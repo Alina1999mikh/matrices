@@ -15,7 +15,10 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        switchTypeEquations();
+    }
 
+    private static void switchTypeEquations() {
         Scanner inType = new Scanner(System.in);
         System.out.print("\nВведите одну из команд - ( 1- линейное уравнение | 2- нелинейное уравнение | exit ): ");
         String typeEquations = inType.nextLine();
@@ -41,7 +44,7 @@ public class Main {
     private static void switchLinear(Matrix matrix) {
         while (true) {
             Scanner inLine = new Scanner(System.in);
-            System.out.print("\nВыберите метод - ( 1- Гаусса | 2- простых итераций | 3- Зейделя | exit ): ");
+            System.out.print("\nВыберите метод - ( 1- Гаусса | 2- простых итераций | 3- Зейделя | back | exit ): ");
             String command = inLine.nextLine();
 
             switch (command) {
@@ -72,6 +75,9 @@ public class Main {
                     nuton.solution(m);
                     nuton.printResult(m);
                     break;
+                case "back":
+                    switchTypeEquations();
+                    break;
                 case "exit":
                     System.out.println("\nSee you later!\n");
                     System.exit(0);
@@ -85,7 +91,7 @@ public class Main {
     private static void switchLNoLinear(Massive massive) {
         while (true) {
             Scanner inLine = new Scanner(System.in);
-            System.out.print("\nВыберите метод - ( 1- половинного деления | 2- Хорд | 3-Ньютона | exit ): ");
+            System.out.print("\nВыберите метод - ( 1- половинного деления | 2- Хорд | 3-Ньютона | back |  exit ): ");
             String command = inLine.nextLine();
 
             Scanner inInterval = new Scanner(System.in);
@@ -111,6 +117,9 @@ public class Main {
                     nuton.printMatrix(massive);
                     nuton.solution(massive);
                     nuton.printResult(massive);
+                    break;
+                case "back":
+                    switchTypeEquations();
                     break;
                 case "exit":
                     System.out.println("\nSee you later!\n");

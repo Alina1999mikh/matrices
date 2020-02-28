@@ -27,7 +27,7 @@ public abstract class AbstractSystemNoLinearEquations implements SolutionEquatio
     public void solution(Object objectStorage) {
         Massive storage=(Massive) objectStorage;
         Scanner in = new Scanner(System.in);
-        System.out.print("\nInput e : ");
+        System.out.print("\nВВедите точность : ");
         double e = in.nextDouble();
         doSolution(storage, e);
     }
@@ -36,7 +36,7 @@ public abstract class AbstractSystemNoLinearEquations implements SolutionEquatio
     public void printResult(Object objectStorage) {
         Massive storage=(Massive) objectStorage;
         System.out.println("x= " + storage.getX());
-        System.out.print("\nResult: ");
+        System.out.print("\nРезультат: ");
         System.out.printf("%.4f*(%.4f)^2 + %.4f = %.4f", storage.getMatrix()[0], storage.getX(), storage.getMatrix()[1], storage.getResult());
         System.out.println();
     }

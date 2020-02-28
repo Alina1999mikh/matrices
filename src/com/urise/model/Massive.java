@@ -11,7 +11,7 @@ public class Massive {
     public Massive() {
         this.dimension = 1;
         matrix = new double[dimension+2];
-        System.out.println("Input coefficients - ");
+        System.out.println("Введите коэффициенты - ");
         Scanner in = new Scanner(System.in);
         setMatrix(0, in.nextInt());
         setMatrix(1, in.nextInt());

@@ -20,7 +20,7 @@ abstract public class AbstractSystemLinearEquations implements SolutionEquations
     @Override
     public void printResult(Object objectStorage) {
         Matrix storage = (Matrix) objectStorage;
-        System.out.print("\nResult: ");
+        System.out.print("\nРезультат: ");
         for (int i = 0; i < storage.dimension(); i++) {
             System.out.printf("%.3f ", storage.getResult()[i]);
         }
