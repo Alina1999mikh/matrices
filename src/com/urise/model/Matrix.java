@@ -52,7 +52,6 @@ public class Matrix {
 
     public void setResult(double[] result2) {
         if (dimension >= 0) System.arraycopy(result2, 0, result, 0, dimension);
-
     }
 
     public int dimension() {

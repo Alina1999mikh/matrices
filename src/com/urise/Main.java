@@ -1,9 +1,11 @@
 package com.urise;
 
-import com.urise.storage.MethodGauss;
+import com.urise.Solution.LinearEquations.MethodGauss;
+import com.urise.Solution.NoLinearEquations.MethodNuton;
+import com.urise.model.Massive;
 import com.urise.model.Matrix;
-import com.urise.storage.MethodSimpleIterations;
-import com.urise.storage.MethodZeidel;
+import com.urise.Solution.LinearEquations.MethodSimpleIterations;
+import com.urise.Solution.LinearEquations.MethodZeidel;
 
 import java.util.Scanner;
 
@@ -40,6 +42,14 @@ public class Main {
                     zeidel.printMatrix(matrix);
                     zeidel.solution(matrix);
                     zeidel.printResult(matrix);
+                    break;
+                case "4":
+                    final Massive m = new Massive();
+                    final MethodNuton nuton = new MethodNuton();
+                    nuton.printMatrix(m);
+                    m.setInterval(1, 2);
+                    nuton.solution(m);
+                    nuton.printResult(m);
                     break;
                 case "exit":
                     System.out.println("\nSee you later!\n");
