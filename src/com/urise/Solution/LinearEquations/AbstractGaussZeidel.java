@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations {
 
-    private int needExactitude;
+    private double needExactitude;
 
     @Override
     protected void doSolution(Matrix storage) {
@@ -54,7 +54,7 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
     private void getVectorX(Matrix storage) {
         Scanner in = new Scanner(System.in);
         System.out.print("Input a exactitude: ");
-        needExactitude = ((-1) * in.nextInt());
+        needExactitude = in.nextDouble();
         double steps = qualitySteps(storage);
         int i = 0;
         do {
@@ -67,7 +67,7 @@ abstract public class AbstractGaussZeidel extends AbstractSystemLinearEquations 
     private double qualitySteps(Matrix storage) {
         double C = getSolution(storage);
         double B = getB(storage);
-        return Math.ceil(Math.log((1 - C) / (B * Math.pow(10, needExactitude))) / Math.log(C) + 1);
+        return Math.ceil(Math.log((1 - C) / (B * (1/needExactitude))) / Math.log(C) + 1);
     }
 
     protected abstract boolean checkSolution(Matrix storage);
